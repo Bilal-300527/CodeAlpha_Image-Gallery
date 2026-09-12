@@ -1,0 +1,470 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #222;
+}
+
+
+/* ================= HEADER ================= */
+
+.gallery-header {
+    text-align: center;
+    padding: 60px 20px 30px;
+}
+
+.gallery-header h1 {
+    font-size: 48px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.gallery-header p {
+    color: #777;
+    font-size: 18px;
+}
+
+
+/* ================= FILTER BUTTONS ================= */
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 40px;
+
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    border: none;
+    background: #fff;
+
+    padding: 11px 25px;
+
+    border-radius: 30px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #111;
+    color: #fff;
+}
+
+.filter-btn.active {
+    background: #111;
+    color: #fff;
+}
+
+
+/* ================= GALLERY ================= */
+
+.gallery-container {
+    padding-bottom: 60px;
+}
+
+.gallery-item {
+    margin-bottom: 30px;
+}
+
+
+/* ================= CARD ================= */
+
+.gallery-card {
+    position: relative;
+
+    width: 100%;
+    height: 280px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #111;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+}
+
+
+/* ================= IMAGE ================= */
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+
+/* ================= OVERLAY ================= */
+
+.image-overlay {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    background: linear-gradient(transparent,
+            rgba(0, 0, 0, 0.9));
+
+    color: white;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition: 0.4s ease;
+}
+
+
+/* Hover */
+
+.gallery-card:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-card:hover .image-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ================= TITLE ================= */
+
+.image-overlay span {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #00d4ff;
+
+    font-weight: bold;
+}
+
+.image-overlay h3 {
+    font-size: 20px;
+
+    margin-top: 5px;
+
+    margin-bottom: 0;
+}
+
+
+/* ================= VIEW BUTTON ================= */
+
+.view-btn {
+    border: none;
+
+    background: white;
+
+    color: #111;
+
+    padding: 9px 15px;
+
+    border-radius: 25px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.view-btn:hover {
+    background: #00d4ff;
+    color: white;
+
+    transform: translateY(-3px);
+}
+
+
+/* ================= HIDDEN FILTER ================= */
+
+.gallery-item.hide {
+    display: none;
+}
+
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.94);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+
+/* ================= LIGHTBOX IMAGE ================= */
+
+.lightbox-content {
+    text-align: center;
+
+    max-width: 85%;
+    max-height: 90vh;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 75vh;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-content h3 {
+    color: white;
+
+    margin-top: 15px;
+
+    font-size: 22px;
+}
+
+
+/* ================= CLOSE BUTTON ================= */
+
+.close-btn,
+.prev-btn,
+.next-btn {
+    position: absolute;
+
+    border: none;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s ease;
+
+    z-index: 10;
+}
+
+.close-btn:hover,
+.prev-btn:hover,
+.next-btn:hover {
+    background: #00d4ff;
+    color: white;
+
+    transform: scale(1.1);
+}
+
+
+/* Close */
+
+.close-btn {
+    top: 30px;
+    right: 30px;
+}
+
+
+/* Previous */
+
+.prev-btn {
+    left: 30px;
+}
+
+
+/* Next */
+
+.next-btn {
+    right: 30px;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 991px) {
+
+    .gallery-header {
+        padding-top: 45px;
+    }
+
+    .gallery-header h1 {
+        font-size: 42px;
+    }
+
+    .gallery-card {
+        height: 250px;
+    }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 767px) {
+
+    .gallery-header {
+        padding: 35px 15px 25px;
+    }
+
+    .gallery-header h1 {
+        font-size: 34px;
+    }
+
+    .gallery-header p {
+        font-size: 15px;
+    }
+
+    .filter-buttons {
+        gap: 8px;
+
+        margin-bottom: 30px;
+    }
+
+    .filter-btn {
+        padding: 9px 18px;
+
+        font-size: 14px;
+    }
+
+    .gallery-card {
+        height: 260px;
+    }
+
+    .image-overlay {
+        opacity: 1;
+
+        transform: translateY(0);
+
+        padding: 18px;
+    }
+
+    .image-overlay h3 {
+        font-size: 17px;
+    }
+
+    .view-btn {
+        padding: 8px 12px;
+    }
+
+
+    /* Lightbox */
+
+    .lightbox-content {
+        max-width: 90%;
+    }
+
+    .lightbox-content img {
+        max-height: 65vh;
+    }
+
+    .close-btn {
+        top: 20px;
+        right: 20px;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
+
+    .close-btn,
+    .prev-btn,
+    .next-btn {
+        width: 42px;
+        height: 42px;
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+    .gallery-header h1 {
+        font-size: 28px;
+    }
+
+    .gallery-header p {
+        font-size: 14px;
+    }
+
+    .filter-btn {
+        padding: 8px 15px;
+    }
+
+    .gallery-card {
+        height: 220px;
+
+        border-radius: 14px;
+    }
+
+    .image-overlay {
+        padding: 15px;
+    }
+
+    .image-overlay h3 {
+        font-size: 15px;
+    }
+
+}
